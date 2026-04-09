@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>VIOLA | EMPLOYEE DATABASE [LIVE]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewfit=cover">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: black;
+    color: #00ff9f;
+    font-family: monospace;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid #00ff9f;
+    padding-bottom: 8px;
+    word-break: break-word;
+}
+
+h1::before {
+    content: "⚡ ";
+    color: #ff4444;
+}
+
+h2 {
+    font-size: 1.1rem;
+    border-bottom: 1px solid #00ff9f;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+h2::before {
+    content: ">> ";
+    color: #00ff9f;
+}
+
+.section {
+    margin-top: 16px;
+    padding: 12px;
+    border: 1px solid #00ff9f;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.6);
+    word-break: break-word;
+}
+
+.profile-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #00ff9f;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.info-text p {
+    margin: 5px 0;
+    font-size: 0.85rem;
+}
+
+#media-vault {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+#media-vault img, #media-vault video {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #00ff9f;
+    background: black;
+}
+
+#chat-log, #call-log {
+    max-height: 280px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.5);
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+}
+
+.chat-message, .call-entry {
+    padding: 5px 0;
+    border-bottom: 1px dashed #00ff9f40;
+    white-space: pre-wrap;
+}
+
+.movement-link {
+    color: #00ff9f;
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 0.75rem;
+}
+.movement-link:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .profile-img {
+        width: 55px;
+        height: 55px;
+    }
+    .info-text p {
+        font-size: 0.75rem;
+    }
+    h1 {
+        font-size: 1.1rem;
+    }
+    h2 {
+        font-size: 0.95rem;
+    }
+    .section {
+        padding: 10px;
+    }
+    .movement-link {
+        font-size: 0.7rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="container">
+<h1>VIOLA :: EMPLOYEE DATABASE [LIVE ACCESS]</h1>
+
+<div class="section">
+<h2>BASIC INFO</h2>
+<div class="info-row">
+    <img id="profile-img" class="profile-img" src="" alt="PROFILE">
+    <div class="info-text">
+        <p><strong>الاسم:</strong> سماح سمير مهني شحاته</p>
+        <p><strong>الرقم القومي:</strong> 28203010110347</p>
+        <p><strong>تاريخ الميلاد:</strong> 01 / 03 / 1982</p>
+        <p><strong>الحالة الاجتماعية:</strong> متزوجة</p>
+        <p><strong>عدد الأبناء:</strong> 4 (بنات)</p>
+        <p><strong>الجنسية:</strong> مصرية</p>
+    </div>
+</div>
+</div>
+
+<div class="section">
+<h2>CONTACT</h2>
+<p>📞 01032911418</p>
+<p>📞 01020440891</p>
+<p>📞 01091838287</p>
+<p>📞 01040838587</p>
+<p>📞 01148295686</p>
+<p>✉️ samah.viola82@mail.com</p>
+</div>
+
+<div class="section">
+<h2>BUSINESS INFO</h2>
+<p><strong>اسم البيزنس:</strong> Viola</p>
+<p><strong>نوع النشاط:</strong> تجميل - بشرة - شعر - عناية شخصية</p>
+<p><strong>ساعات العمل:</strong> 10 صباحًا - 10 مساءً</p>
+<p><strong>عدد الموظفين:</strong> 6</p>
+<p><strong>الدخل الشهري:</strong> 115,000 – 150,000 جنيه</p>
+<ul style="margin-top:5px; padding-right:20px;">
+<li>تنظيف بشرة</li>
+<li>جلسات ليزر</li>
+<li>تصفيف شعر</li>
+<li>ميك أب احترافي</li>
+<li>عناية بالأظافر</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>MOVEMENT LOG [LIVE]</h2>
+<p>📍 <a href="https://goo.gl/maps/xyz1" target="_blank" class="movement-link">https://goo.gl/maps/xyz1</a> | 10:15 صباحًا</p>
+<p>📍 <a href="https://goo.gl/maps/xyz2" target="_blank" class="movement-link">https://goo.gl/maps/xyz2</a> | 12:40 ظهرًا</p>
+<p>📍 <a href="https://goo.gl/maps/xyz3" target="_blank" class="movement-link">https://goo.gl/maps/xyz3</a> | 1:05 مساءً</p>
+<p>📍 <a href="https://goo.gl/maps/xyz4" target="_blank" class="movement-link">https://goo.gl/maps/xyz4</a> | 3:20 مساءً</p>
+<p>📍 <a href="https://goo.gl/maps/xyz5" target="_blank" class="movement-link">https://goo.gl/maps/xyz5</a> | 5:00 مساءً</p>
+</div>
+
+<div class="section">
+<h2>BANK DATA</h2>
+<p><strong>نوع الحساب:</strong> Master</p>
+<p><strong>حسابات مرتبطة:</strong> 01020440891 | 01040838587 | 01091838287</p>
+<p><strong>وسيلة الدفع:</strong> تحويل بنكي / كاش</p>
+</div>
+
+<div class="section">
+<h2>MEDIA VAULT</h2>
+<div id="media-vault"></div>
+</div>
+
+<div class="section">
+<h2>CHAT LOG [DECRYPTED]</h2>
+<div id="chat-log"></div>
+</div>
+
+<div class="section">
+<h2>CALL LOG [ENCRYPTED]</h2>
+<div id="call-log"></div>
+</div>
+</div>
+
+<script>
+// Background network
+const canvas = document.getElementById("bg"), ctx = canvas.getContext("2d");
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let points = [];
+for(let i=0;i<50;i++){
+    points.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        vx:(Math.random()-0.5)*0.4,
+        vy:(Math.random()-0.5)*0.4
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<points.length;i++){
+        let p=points[i];
+        p.x+=p.vx;
+        p.y+=p.vy;
+        if(p.x<0||p.x>canvas.width) p.vx*=-1;
+        if(p.y<0||p.y>canvas.height) p.vy*=-1;
+        for(let j=i+1;j<points.length;j++){
+            let p2=points[j];
+            let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
+            if(dist<100){
+                ctx.strokeStyle="rgba(0,255,159,0.15)";
+                ctx.beginPath();
+                ctx.moveTo(p.x,p.y);
+                ctx.lineTo(p2.x,p2.y);
+                ctx.stroke();
+            }
+        }
+        ctx.fillStyle="#00ff9f";
+        ctx.fillRect(p.x,p.y,1.5,1.5);
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+
+// Chat log (original)
+const chatLog=document.getElementById("chat-log");
+const chatMessages=[
+"[٢٩/٣، ٥:٢٠ م] : فينك؟ بقالك كتير مش بتردي",
+"[٢٩/٣، ٥:٢١ م] : معلش كنت تعبانة شوية",
+"[٢٩/٣، ٥:٢٢ م] : تعبانة ولا بتبعدي عشان الموضوع؟",
+"[٢٩/٣، ٥:٢٣ م] : لا والله بس مش عارفة أتصرف",
+"[٢٩/٣، ٥:٢٤ م] : مش عارفة؟ انتي فاكرة اللي حصل ولا نسيتي؟",
+"[٢٩/٣، ٥:٢٥ م] : فاكرة… بس مش عايزة أرجع لنفس النقطة",
+"[٢٩/٣، ٥:٢٦ م] : أنا بقى مش هعديها كده",
+"[٢٩/٣، ٥:٢٧ م] : طب عايزة ايه مني",
+"[٢٩/٣، ٥:٢٨ م] : عايزة تظبطي الوضع قبل ما الشخص ده ييجي",
+"[٢٩/٣، ٥:٢٩ م] : هو جاي امتى",
+"[٢٩/٣، ٥:٣٠ م] : كمان أسبوع… وعندنا وقت بس مش للتهريج",
+"[٢٩/٣، ٥:٣١ م] : الموضوع ده مقلقني جدًا",
+"[٢٩/٣، ٥:٣٢ م] : يقلقك؟ طب تخيلي لو الأمور خرجت بره السيطرة",
+"[٢٩/٣، ٥:٣٣ م] : بلاش تضغطي عليا كده",
+"[٢٩/٣، ٥:٣٤ م] : أنا مش بضغط… أنا بفكرك بس",
+"[٢٩/٣، ٥:٣٥ م] : يا سماح بتعملي فيا كده ليه بجد حرام هموت نفسي من اللي انتي بتعمليه",
+"[٢٩/٣، ٥:٣٦ م] : متكبريش الموضوع… انتي اللي دخلتي نفسك فيه",
+"[٢٩/٣، ٥:٣٧ م] : أنا كنت تايهة وقتها",
+"[٢٩/٣، ٥:٣٨ م] : ودلوقتي لازم تبقي مركزة",
+"[٢٩/٣، ٥:٣٩ م] : طب أعمل ايه بالظبط",
+"[٢٩/٣، ٥:٤٠ م] : تظبطي كل حاجة قبل ما يوصل… من غير غلطة",
+"[٢٩/٣، ٥:٤١ م] : خايفة يحصل حاجة غلط",
+"[٢٩/٣، ٥:٤٢ م] : الغلط الوحيد إنك متعمليش اللي مطلوب",
+"[٢٩/٣، ٥:٤٣ م] : طب اديني وقت أفكر",
+"[٢٩/٣، ٥:٤٤ م] : عندك أسبوع… بس كل يوم تأخير هيصعّبها",
+"[٢٩/٣، ٥:٤٥ م] : أنا بجد مضغوطة",
+"[٢٩/٣، ٥:٤٦ م] : وأنا كمان… بس أنا بعرف أتصرف",
+"[٢٩/٣، ٥:٤٧ م] : طب لو حصل حاجة؟",
+"[٢٩/٣، ٥:٤٨ م] : يبقى انتي اللي هتتحملي",
+"[٢٩/٣، ٥:٤٩ م] : انتي قاسية أوي",
+"[٢٩/٣، ٥:٥٠ م] : القسوة دي عشان نخلص الموضوع",
+"[٢٩/٣، ٥:٥١ م] : طيب خلاص هحاول أظبط الدنيا",
+"[٢٩/٣، ٥:٥٢ م] : مش تحاولي… تعملي",
+"[٢٩/٣، ٥:٥٣ م] : حاضر",
+"[٢٩/٣، ٥:٥٤ م] : وخلي بالك… الشخص ده مهم جدًا",
+"[٢٩/٣، ٥:٥٥ م] : فهمت",
+"[٢٩/٣، ٥:٥٦ م] : وهو هيدفع كتير… فلازم كل حاجة تبقى تمام",
+"[٢٩/٣، ٥:٥٧ م] : حاضر… هركز في كل حاجة",
+"[٢٩/٣، ٥:٥٨ م] : كويس… هستنى منك أخبار أول بأول",
+"[٢٩/٣، ٥:٥٩ م] : تمام",
+"[٢٩/٣، ٦:٠٠ م] : ومتتأخريش… عشان المرة دي مفيش رجوع"
+];
+let chatIndex=0;
+function addChat(){
+    if(chatIndex<chatMessages.length){
+        const p=document.createElement("p");
+        p.textContent=chatMessages[chatIndex];
+        p.className="chat-message";
+        chatLog.appendChild(p);
+        chatIndex++;
+        chatLog.scrollTop=chatLog.scrollHeight;
+        setTimeout(addChat,450);
+    }
+}
+addChat();
+
+// ========== MEDIA VAULT ==========
+const mediaVault = document.getElementById("media-vault");
+const yourImages = [
+    "https://i.postimg.cc/KYYRYHqg/FB-IMG-1775345029943.jpg",
+    "https://i.postimg.cc/mrrtr5XP/FB-IMG-1775345037566.jpg",
+    "https://i.postimg.cc/W44h4HWb/FB-IMG-1775345084445.jpg",
+    "https://i.postimg.cc/433m3SLy/FB-IMG-1775345094824.jpg",
+    "https://i.postimg.cc/9ffrfn8Q/FB-IMG-1775345106184.jpg",
+    "https://i.postimg.cc/KYYRYHqz/FB-IMG-1775345113632.jpg",
+    "https://i.postimg.cc/XvvpvzH3/FB-IMG-1775345122990.jpg",
+    "https://i.postimg.cc/g00n0TSY/FB-IMG-1775345132343.jpg",
+    "https://i.postimg.cc/W18dTvnd/FB-IMG-1775345144722.jpg",
+    "https://i.postimg.cc/SKKJKvTk/FB-IMG-1775345154842.jpg",
+    "https://i.postimg.cc/GmK4dCQ2/FB-IMG-1775345172925.jpg",
+    "https://i.postimg.cc/bwgZphTw/FB-IMG-1775345185141.jpg",
+    "https://i.postimg.cc/8z47NSHP/FB-IMG-1775345194027.jpg",
+    "https://i.postimg.cc/Bnpj40gq/FB-IMG-1775345275381.jpg",
+    "https://i.postimg.cc/52gXbV3y/FB-IMG-1775345286192.jpg",
+    "https://i.postimg.cc/QdmFh3qy/IMG-20260405-183029-896.jpg",
+    "https://i.postimg.cc/y8jDsHP1/IMG-20260405-182519.jpg",
+    "https://i.postimg.cc/T30Kf69T/IMG-20260405-182607.jpg",
+    "https://i.postimg.cc/6pc8tX0x/IMG-20260405-182657.jpg",
+    "https://i.postimg.cc/Dw6SnTct/IMG-20260405-182731.jpg",
+    "https://i.postimg.cc/3x1kYTBh/IMG-20260405-182838.jpg",
+    "https://i.postimg.cc/htsXcBrg/IMG-20260405-182901.jpg"
+];
+const yourVideos = [
+    "https://files.catbox.moe/mnmk1e.mp4",
+    "https://files.catbox.moe/5ly1if.mp4",
+    "https://files.catbox.moe/58die9.mp4",
+    "https://files.catbox.moe/g0387c.mp4"
+];
+
+// Profile image = second link (index 1)
+if(yourImages.length > 1) {
+    document.getElementById("profile-img").src = yourImages[1];
+} else if(yourImages.length > 0) {
+    document.getElementById("profile-img").src = yourImages[0];
+}
+
+// Add images
+for(let imgUrl of yourImages) {
+    let img = document.createElement("img");
+    img.src = imgUrl;
+    mediaVault.appendChild(img);
+}
+// Add videos
+for(let videoUrl of yourVideos) {
+    let video = document.createElement("video");
+    video.src = videoUrl;
+    video.controls = true;
+    mediaVault.appendChild(video);
+}
+
+// ========== CALL LOGS ==========
+const callLogDiv = document.getElementById("call-log");
+const callNumbers = [
+"01084736251","01159284736","01276483925","01593827461","01029384756","01184736295","01259384716","01576483952","01093847562","01127384956",
+"01284736295","01529384761","01056473829","01193847561","01237485926","01584736293","01072839465","01156473829","01293847562","01537485926",
+"01084759362","01129384756","01256473891","01593847526","01037485926","01184759362","01229384765","01556473892","01093847521","01137485962",
+"01284759326","01529384765","01056473891","01193847562","01237485961","01584759362","01072839456","01156473892","01293847561","01537485962",
+"01084736295","01129384761","01256473829","01593847561","01037485961","01184736293","01229384756","01556473829","01093847562","01137485926",
+"01284736291","01529384756","01056473829","01193847526","01237485962","01584736295","01072839461","01156473829","01293847526","01537485961"
+];
+let callIndex = 0;
+function addCallLog() {
+    if(callIndex >= callNumbers.length) callIndex = 0;
+    const number = callNumbers[callIndex];
+    const direction = Math.random() > 0.5 ? "📞 INCOMING" : "📱 OUTGOING";
+    const duration = Math.floor(Math.random() * 15) + 1;
+    const timestamp = new Date().toLocaleTimeString();
+    const callDiv = document.createElement("div");
+    callDiv.className = "call-entry";
+    callDiv.textContent = `[${timestamp}] ${direction} | ${number} | Duration: ${duration} min`;
+    callLogDiv.appendChild(callDiv);
+    callLogDiv.scrollTop = callLogDiv.scrollHeight;
+    callIndex++;
+    setTimeout(addCallLog, 1800);
+}
+setTimeout(addCallLog, 500);
+</script>
+</body>
+</html>
